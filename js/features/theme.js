@@ -1,17 +1,17 @@
 /* SHAMS — dark mode controller
-   - remembers the choice (defaults to dark)
+   - remembers the choice (defaults to light)
    - sun/moon toggle in the header + sticky mini bar
    - circular reveal from the toggle (View Transitions API, graceful fallback)
    - twinkling star canvas with parallax + shooting stars
    - cursor spotlight on the page and on cards/categories                      */
 (function () {
   const root = document.documentElement;
-  const KEY = "shams_theme";
+  const KEY = "shams_theme_v2"; // v2: resets old saved choices so the site opens in light mode
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---- 1. apply saved theme immediately (this script sits in <head>, so no flash) ---- */
-  let theme = "dark";
-  try { theme = localStorage.getItem(KEY) || "dark"; } catch (e) {}
+  let theme = "light";
+  try { theme = localStorage.getItem(KEY) || "light"; } catch (e) {}
   root.setAttribute("data-theme", theme);
   const metaTheme = () => {
     let m = document.querySelector('meta[name="theme-color"]');
