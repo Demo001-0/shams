@@ -75,3 +75,10 @@ body.leaving{opacity:0;transition:opacity .25s;animation:none}
 .logo svg,#mini .msun svg{fill:var(--brand)}
 .logo svg line,#mini .msun svg line{stroke:var(--brand)}
 
+
+/* phones: the sticky bar shows the burger menu where the logo was */
+#mini .mburger{display:none}
+@media(max-width:820px){
+  #mini .mlogo{display:none}
+  #mini .mburger{display:grid}
+}

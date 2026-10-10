@@ -34,7 +34,6 @@
         <button class="bc-face" type="button" aria-expanded="false" aria-controls="bc${i}b" aria-label="${c.label}">
           <span class="bc-art">${c.art}</span>
           <span class="bc-label">${c.label}</span><span class="bc-short">${c.short}</span>
-          <span class="bc-plus" aria-hidden="true"></span>
         </button>
         <div class="bc-body" id="bc${i}b" role="region" aria-label="${c.label}">
           <button class="bc-close" type="button" aria-label="Close">×</button>
@@ -49,8 +48,14 @@
 
   const cards = [...wrap.querySelectorAll(".bc")];
   const setOpen = (card, open) => {
+    if (open) fit(card);
     card.classList.toggle("open", open);
     card.querySelector(".bc-face").setAttribute("aria-expanded", String(open));
+  };
+  /* phones: size the open card to its text so there is no empty space inside */
+  const fit = card => {
+    if (innerWidth > 860) { card.style.removeProperty("--oh"); return; }
+    card.style.setProperty("--oh", Math.ceil(card.querySelector(".bc-body").offsetHeight) + "px");
   };
   const closeAll = except => cards.forEach(c => c !== except && setOpen(c, false));
   cards.forEach(card => {
@@ -71,6 +76,7 @@
   };
   place();
   addEventListener("resize", place);
+  addEventListener("resize", () => cards.forEach(c => c.classList.contains("open") && fit(c)));
   addEventListener("load", place);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
 
@@ -78,7 +84,7 @@
   let tick = false;
   addEventListener("scroll", () => {
     if (tick) return; tick = true;
-    requestAnimationFrame(() => { wrap.classList.toggle("gone", scrollY > header.offsetHeight * 0.55); tick = false; });
+    requestAnimationFrame(() => { wrap.classList.remove("gone"); tick = false; });
   }, { passive: true });
 
   /* spring in after the logo has settled */

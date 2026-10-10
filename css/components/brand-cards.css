@@ -1,6 +1,5 @@
 /* css/components/brand-cards.css — flat 2D cards floating in the empty sides of the home splash */
-.bc-wrap{position:absolute;inset:0;z-index:1;pointer-events:none;
-  opacity:calc(1 - var(--sp,0)*1.6);translate:0 calc(var(--sy,0px)*.5)}
+.bc-wrap{position:absolute;inset:0;z-index:1;pointer-events:none;}
 .bc-wrap.gone{visibility:hidden}
 
 .bc{--w:clamp(132px,13.5vw,176px);--h:calc(var(--w)*1.34);--ow:min(332px,86vw);--oh:392px;
@@ -65,7 +64,7 @@ html[data-theme="dark"] .bc-card{box-shadow:0 16px 36px rgba(60,15,35,.45)}
 /* ---- narrow screens: round badges flanking the sun, opening into the same card ---- */
 @media(max-width:860px){
   /* mini versions of the desktop cards: same tilt, dashed frame and washi tape */
-  .bc{--w:88px;--h:112px;--ow:min(300px,86vw);--oh:372px;transform:none;top:calc(var(--bc-sy,160px) - var(--h)/2)}
+  .bc{--w:88px;--h:112px;--ow:min(246px,70vw);--oh:240px;transform:none;top:calc(var(--bc-sy,160px) - var(--h)/2)}
   .bc-left{left:10px}.bc-right{right:10px}
   .bc-left .bc-card,.bc-right .bc-card{border-radius:16px;box-shadow:0 8px 18px rgba(190,88,115,.18)}
   .bc-left .bc-card{rotate:-4deg}.bc-right .bc-card{rotate:4deg}
@@ -79,7 +78,17 @@ html[data-theme="dark"] .bc-card{box-shadow:0 16px 36px rgba(60,15,35,.45)}
   .bc-short{display:block;font-family:var(--font-head);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
   .bc.open .bc-card{border-radius:22px;box-shadow:0 26px 60px rgba(120,40,70,.35)}
   .bc-left.open .bc-card::before,.bc-right.open .bc-card::before{inset:8px;border-radius:15px;border-width:1.5px}
-  .bc-body{padding:70px 24px 22px}
-  .bc-left .bc-body,.bc-right .bc-body{padding-top:40px}
+  /* open card on phones: compact, height fitted to the text by brand-cards.js (no empty space) */
+  .bc-body{height:auto;overflow:visible;padding:34px 20px 20px}
+  .bc-left .bc-body,.bc-right .bc-body{padding-top:34px}
+  .bc-kicker{font-size:10px;margin-bottom:6px}
+  .bc-body h3{font-size:20px;margin-bottom:8px}
+  .bc-body h3::after{margin-top:9px;width:36px}
+  .bc-body p{font-size:13px;line-height:1.6;margin-bottom:14px}
+  .bc-cta{font-size:11px;padding:9px 20px}
+  .bc-close{top:8px;right:10px;width:28px;height:28px;font-size:22px}
 }
 @media(prefers-reduced-motion:reduce){.bc,.bc-card,.bc-rays{animation:none!important;transition:none!important}.bc{opacity:1;scale:1}}
+
+/* no "+" on the closed cards */
+.bc-plus{display:none!important}

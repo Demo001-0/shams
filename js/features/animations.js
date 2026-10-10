@@ -122,14 +122,29 @@
   // compact bar that slides in when you scroll back up
   const mini = document.createElement("div");
   mini.id = "mini";
-  mini.innerHTML = `<a class="mlogo" href="home.html"><span class="msun">${sunLogo}</span><img src="assets/images/logo.png" alt="Shams Cosmetics"></a>
+  mini.innerHTML = `<button class="icon-btn mburger" id="mMenu" type="button" aria-label="Menu">${icons.menu}</button>
+    <a class="mlogo" href="home.html"><span class="msun">${sunLogo}</span><img src="assets/images/logo.png" alt="Shams Cosmetics"></a>
     <nav>${navLinks.map(([h, t]) => `<a href="${h}">${t}</a>`).join("")}</nav>
     <div class="macts"><button class="icon-btn" id="mSearch" aria-label="Search">${icons.search}</button>
     <button class="icon-btn" id="mCart" aria-label="Cart">${icons.bag}<span class="cart-count" id="mCount">0</span></button></div>`;
   document.body.appendChild(mini);
+  document.getElementById("mMenu").onclick = () => document.getElementById("openMenu").click();
   document.getElementById("mSearch").onclick = () => document.getElementById("openSearch").click();
   document.getElementById("mCart").onclick = () => document.getElementById("openCart").click();
   const mCount = document.getElementById("mCount"), badge = document.getElementById("cartCount");
+
+  // eased scroll motion: every parallax value glides toward its target instead of jumping with each scroll event
+  const moving = new Set(); let easeRaf = 0;
+  const ease = () => {
+    easeRaf = 0;
+    moving.forEach(el => {
+      const d = el._t - el._p;
+      if (Math.abs(d) < 0.0006) { el._p = el._t; el._fn(el, el._p, el._i); moving.delete(el); return; }
+      el._p += d * 0.12;
+      el._fn(el, el._p, el._i);
+    });
+    if (moving.size) easeRaf = requestAnimationFrame(ease);
+  };
 
   let last = 0, tick = false;
   const update = () => {
@@ -144,9 +159,12 @@
     root.setProperty("--py", Math.min(y, 250) * 0.07 + "px");
     items.forEach(([el, fn, i]) => {
       const r = el.getBoundingClientRect();
-      if (r.bottom < -150 || r.top > vh + 150) return;
-      fn(el, Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height))), i);
+      if (r.bottom < -150 || r.top > vh + 150) { el._off = true; return; }
+      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+      if (el._p === undefined || el._off) { el._p = p; el._off = false; fn(el, p, i); }   // first time in view: no catch-up swoosh
+      el._t = p; el._fn = fn; el._i = i; moving.add(el);
     });
+    if (moving.size && !easeRaf) easeRaf = requestAnimationFrame(ease);
     const hdr = document.querySelector(".header");
     const past = y > (hdr ? hdr.offsetTop + hdr.offsetHeight : 300);
     if (document.body.classList.contains("home-splash") && hdr) {

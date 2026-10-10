@@ -33,4 +33,3 @@ shams/
   `animations.js` and `brand-cards.js` are loaded by `bootstrap.js` after the page is built.
 - To add a product: edit `js/data/products.js`. To add a page: copy an existing page, add `js/pages/<name>.js`.
 - Google Fonts are linked from each page's `<head>`.
-
