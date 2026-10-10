@@ -1,0 +1,41 @@
+/* css/theme/dark-base.css — Dark tokens, scrollbar, aurora, cursor spotlight */
+/* =====================================================================
+   DARK THEME
+   ===================================================================== */
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#994b64; --card:#a04f69; --ink:#fbe9ef; --brand:#f0b0c4; --hero:#a15069;
+  --bar:#7b3d50; --dark:#a15069; --accent:#e08aa6; --line:rgba(240,150,182,0.08); --white:#fff;
+  --glow:224,123,154;
+  background:#994b64;
+}
+html[data-theme="dark"] body{background:transparent;color:var(--ink)}
+html[data-theme="dark"] ::selection{background:#e08aa6;color:#fbe9ef}
+html[data-theme="dark"] input[type=checkbox]{accent-color:#e08aa6}
+
+/* scrollbar */
+html[data-theme="dark"]{scrollbar-color:#af5c76 #994b64}
+html[data-theme="dark"] ::-webkit-scrollbar{width:11px;height:11px}
+html[data-theme="dark"] ::-webkit-scrollbar-track{background:#994b64}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:linear-gradient(#e08aa6,#b05471);border-radius:9px;border:2px solid #994b64}
+
+/* aurora + cursor spotlight (behind everything) */
+html[data-theme="dark"] body::before{
+  content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(38vmax 28vmax at 12% 8%,rgba(240,150,182,0.13),transparent 62%),
+    radial-gradient(44vmax 34vmax at 88% 22%,rgba(240,150,182,0.13),transparent 62%),
+    radial-gradient(40vmax 30vmax at 55% 98%,rgba(240,150,182,0.07),transparent 62%);
+  animation:aurora 26s ease-in-out infinite alternate;
+}
+@keyframes aurora{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}
+  50%{transform:translate3d(4%,3%,0) rotate(6deg) scale(1.08)}
+  100%{transform:translate3d(-3%,5%,0) rotate(-5deg) scale(1.02)}
+}
+html[data-theme="dark"] body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(520px circle at var(--mx,50%) var(--my,30%),rgba(240,150,182,0.065),transparent 62%);
+  mix-blend-mode:screen;
+}
+

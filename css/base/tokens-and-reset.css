@@ -1,0 +1,17 @@
+/* css/base/tokens-and-reset.css — Design tokens (colours, fonts), reset, container */
+
+:root{
+  --bg:#fdf1f3; --card:#fff7f8; --ink:#5a3a44; --brand:#d17f97; --hero:#f4c6d2;
+  --bar:#f0bdcb; --dark:#85505f; --accent:#be5873; --line:#f2d6dd; --white:#fff;
+  --font-head:'Marcellus','Cormorant Garamond',serif;
+  --font-logo:'Cormorant Garamond',serif;
+  --font-body:'Assistant','Tajawal',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+.container{max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,64px)}
+

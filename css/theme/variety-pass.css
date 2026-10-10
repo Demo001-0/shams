@@ -1,0 +1,96 @@
+/* css/theme/variety-pass.css — Variety pass: light-mode palette inside dark */
+/* =====================================================================
+   VARIETY PASS — uses only the light-mode palette
+   cream #fdf1f3 · blush #f4c6d2 · pink #f0bdcb · rose #d17f97 · berry #be5873 · mauve #85505f · ink #5a3a44
+   ===================================================================== */
+
+/* --- category cards: icon circles rotate through the light-mode tones --- */
+html[data-theme="dark"] .cat .ci{background:#fdf1f3;color:#be5873;box-shadow:none}
+html[data-theme="dark"] .cat:nth-child(2) .ci{background:#f4c6d2;color:#85505f}
+html[data-theme="dark"] .cat:nth-child(3) .ci{background:#d17f97;color:#fff}
+html[data-theme="dark"] .cat:nth-child(4) .ci{background:#be5873;color:#fff}
+html[data-theme="dark"] .cat:nth-child(5) .ci{background:#f0bdcb;color:#5a3a44}
+html[data-theme="dark"] .cat:hover .ci{background:#fff;color:#be5873}
+
+/* --- sections: alternate between the light-mode surfaces --- */
+/* categories band: mauve (light mode's --dark) */
+html[data-theme="dark"] main>.section:nth-of-type(2){background:rgba(209,127,151,.30)}
+html[data-theme="dark"] main>.section:nth-of-type(3){padding-top:70px!important}
+html[data-theme="dark"] main>.section:nth-of-type(2) .cat{background:#994b64}
+html[data-theme="dark"] main>.section:nth-of-type(2) .cat:hover{background:#be5873}
+/* sale banner: light blush with dark ink, like the light theme's hero */
+html[data-theme="dark"] .banner{background:#f4c6d2;border:0}
+html[data-theme="dark"] .banner h2{background:none;-webkit-text-fill-color:#5a3a44;color:#5a3a44}
+html[data-theme="dark"] .banner p{color:#85505f}
+html[data-theme="dark"] .banner .btn{background:#be5873;border-color:#be5873;color:#fff}
+html[data-theme="dark"] .banner .btn:hover{background:#85505f;border-color:#85505f;color:#fff}
+/* features: cream cards */
+html[data-theme="dark"] .features>div{background:#fdf1f3;border:1px solid #f2d6dd;box-shadow:0 10px 26px rgba(60,15,35,.25)}
+html[data-theme="dark"] .features h4{color:#5a3a44}
+html[data-theme="dark"] .features p{color:#85505f}
+html[data-theme="dark"] .features .fi{background:#be5873;color:#fff;box-shadow:none}
+html[data-theme="dark"] .features>div:nth-child(2) .fi{background:#d17f97}
+html[data-theme="dark"] .features>div:nth-child(3) .fi{background:#85505f}
+/* footer: mauve */
+html[data-theme="dark"] .footer{background:linear-gradient(180deg,rgba(190,88,115,.45),rgba(190,88,115,.6))}
+html[data-theme="dark"] .footer::before{background:#f4c6d2;box-shadow:none;height:1px}
+
+.features .fi{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin:0 auto 16px;background:#f9d3df;color:#b84a6c}
+.features .fi svg{width:27px;height:27px}
+
+/* --- product cards: light cream like light mode (dark mode keeps only the page around them dark) --- */
+html[data-theme="dark"] .card{background:#fff7f8;border:1px solid #f2d6dd;box-shadow:0 10px 30px rgba(60,15,35,.3)}
+html[data-theme="dark"] .card:hover{border-color:#e9aebd;box-shadow:0 18px 44px rgba(60,15,35,.4)}
+html[data-theme="dark"] .card::before,html[data-theme="dark"] .card::after{display:none}
+html[data-theme="dark"] .card .img{background:#f8d6de}
+html[data-theme="dark"] .card .img::after,html[data-theme="dark"] .card:hover .img::after{display:none}
+html[data-theme="dark"] .card h3{color:#5a3a44}
+html[data-theme="dark"] .card .price{color:#be5873}
+html[data-theme="dark"] .card .price s{color:#a8808c}
+html[data-theme="dark"] .card .badge{background:#be5873;color:#fff}
+html[data-theme="dark"] .card .badge.sold{background:#8b6070;color:#fff}
+
+/* --- category cards: light cream like light mode --- */
+html[data-theme="dark"] main>.section:nth-of-type(2) .cat,
+html[data-theme="dark"] .cat{background:#fff7f8;color:#5a3a44;box-shadow:0 10px 26px rgba(60,15,35,.28)}
+html[data-theme="dark"] .cat::before,html[data-theme="dark"] .cat::after{display:none}
+html[data-theme="dark"] main>.section:nth-of-type(2) .cat:hover,
+html[data-theme="dark"] .cat:hover{background:#f4c6d2;color:#5a3a44;box-shadow:0 16px 36px rgba(60,15,35,.38)}
+html[data-theme="dark"] .cat .ci{background:#f9d3df;color:#be5873}
+html[data-theme="dark"] .cat:nth-child(2) .ci{background:#f4c6d2;color:#85505f}
+html[data-theme="dark"] .cat:nth-child(3) .ci{background:#d17f97;color:#fff}
+html[data-theme="dark"] .cat:nth-child(4) .ci{background:#be5873;color:#fff}
+html[data-theme="dark"] .cat:nth-child(5) .ci{background:#85505f;color:#fff}
+html[data-theme="dark"] .cat:hover .ci{background:#fff;color:#be5873}
+
+/* --- big hero sun: fainter --- */
+html[data-theme="dark"] .hero-sun{opacity:.06}
+html[data-theme="dark"] .hero-sun svg circle{stroke-width:1}
+@media(max-width:820px){html[data-theme="dark"] .hero-sun{opacity:.045}}
+
+/* --- cream surfaces: a deeper blush instead of near-white --- */
+html[data-theme="dark"] .card{background:#efc9d5;border-color:#e3b0c1}
+html[data-theme="dark"] .card:hover{border-color:#d99bb0}
+html[data-theme="dark"] .card .img{background:#e6b6c6}
+html[data-theme="dark"] .card .price s{color:#8b6070}
+html[data-theme="dark"] main>.section:nth-of-type(2) .cat,
+html[data-theme="dark"] .cat{background:#efc9d5}
+html[data-theme="dark"] main>.section:nth-of-type(2) .cat:hover,
+html[data-theme="dark"] .cat:hover{background:#e6b3c4}
+html[data-theme="dark"] .cat .ci{background:#fdf1f3;color:#be5873}
+html[data-theme="dark"] .cat:nth-child(2) .ci{background:#d17f97;color:#fff}
+html[data-theme="dark"] .cat:nth-child(3) .ci{background:#be5873;color:#fff}
+html[data-theme="dark"] .cat:nth-child(4) .ci{background:#85505f;color:#fff}
+html[data-theme="dark"] .cat:nth-child(5) .ci{background:#fdf1f3;color:#85505f}
+html[data-theme="dark"] .cat:hover .ci{background:#fff;color:#be5873}
+html[data-theme="dark"] .features>div{background:#efc9d5;border-color:#e3b0c1}
+html[data-theme="dark"] .banner{background:#ebbccb}
+html[data-theme="dark"] .bar.ann + .hero{border-top:0}
+html[data-theme="dark"] .bar.ann{border-top:1px solid rgba(255,225,235,.28)}
+
+/* ---- tighter vertical rhythm (dark overrides) ---- */
+html[data-theme="dark"] .banner{padding:44px 20px}
+html[data-theme="dark"] main>.section:nth-of-type(3){padding-top:0!important}
+html[data-theme="dark"] .features>div{padding:22px 18px}
+@media(max-width:820px){html[data-theme="dark"] .banner{padding:34px 20px}}
+
