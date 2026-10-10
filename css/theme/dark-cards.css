@@ -1,9 +1,7 @@
 /* css/theme/dark-cards.css — Dark: section titles, category and product cards */
 /* ---- section titles ---- */
-html[data-theme="dark"] .section-title{
-  background:linear-gradient(90deg,#fbe9ef 10%,#f4c0d0 55%,#e08aa6 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
-}
+/* solid colour (not background-clip:text): the typewriter letters animate with transform/blur and break a clipped gradient */
+html[data-theme="dark"] .section-title{color:#f9dbe5;-webkit-text-fill-color:currentColor}
 html[data-theme="dark"] .section-title::after{background:linear-gradient(90deg,transparent,#e08aa6,transparent);width:96px;height:2px;box-shadow:0 0 12px #e08aa6}
 
 /* ---- category cards: lit from within ---- */
