@@ -1,8 +1,9 @@
 /* css/base/tokens-and-reset.css — Design tokens (colours, fonts), reset, container */
 
 :root{
-  --bg:#fdf1f3; --card:#fff7f8; --ink:#5a3a44; --brand:#d17f97; --hero:#f4c6d2;
-  --bar:#f0bdcb; --dark:#85505f; --accent:#be5873; --line:#f2d6dd; --white:#fff;
+  /* Luna Collections palette */
+  --bg:#efeeec; --card:#f3f1f0; --ink:#2c332f; --brand:#8c8373; --hero:#706853;
+  --bar:#706853; --dark:#2c3530; --accent:#706853; --line:#e0dcd8; --white:#ffffff;
   --font-head:'Marcellus','Cormorant Garamond',serif;
   --font-logo:'Cormorant Garamond',serif;
   --font-body:'Assistant','Tajawal',sans-serif;

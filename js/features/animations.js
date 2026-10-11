@@ -63,26 +63,29 @@
     el.dataset.twDone = "1";
     const cs = [...el.querySelectorAll(".c")];
     if (!cs.length) return;
-    const base = Math.max(40, Math.min(75, 3000 / cs.length));
+    // steady, quick typing speed (~11-17 letters/sec) with small human wobble
+    const base = Math.max(55, Math.min(85, 2400 / cs.length));
     let i = 0, prev = null;
+    cs[0].classList.add("pre");                      // caret waits before the first letter
     const step = () => {
       if (prev) prev.classList.remove("last");
+      cs[0].classList.remove("pre");
       if (i >= cs.length) return;
       const c = cs[i++];
-      c.classList.add("on", "last");
+      c.classList.add("on", "last", "strike");
       prev = c;
       if (i >= cs.length) {
         el.classList.add("tw-done");
-        setTimeout(() => c.classList.remove("last"), 2400);
+        setTimeout(() => c.classList.remove("last"), 2100);
         return;
       }
       const ch = c.textContent, endOfWord = c.parentNode !== cs[i].parentNode;
-      let d = base * (0.6 + Math.random() * 0.9);
-      if (endOfWord) d += 65;
-      if (/[,.:;!?\u2013\u2014-]/.test(ch)) d += 220;
+      let d = base * (0.75 + Math.random() * 0.55);  // ±: not metronomic, not chaotic
+      if (endOfWord) d += 70;                        // thumb moves to the space bar
+      if (/[,.:;!?\u2013\u2014-]/.test(ch)) d += 240; // brief think-pause on punctuation
       setTimeout(step, d);
     };
-    setTimeout(step, 350);
+    setTimeout(step, 600);                           // caret blinks a moment, then typing starts
   };
   const twIO = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;

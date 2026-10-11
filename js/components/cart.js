@@ -25,5 +25,5 @@ function renderCart(){
         <div class="mini-qty"><button onclick="changeQty('${p.id}',-1)">−</button><span>${i.qty}</span><button onclick="changeQty('${p.id}',1)">+</button></div></div>
       <button class="rm" onclick="removeLine('${p.id}')">Remove</button></div>`}).join("");
   foot.innerHTML = `<div class="subtotal"><span>Subtotal</span><span>${fmt(total)}</span></div><small>Shipping calculated at checkout.</small><button class="btn solid full" id="checkout">Check out</button>`;
-  document.getElementById("checkout").onclick = () => alert("Checkout will be connected in the next phase (payment & orders).");
+  document.getElementById("checkout").onclick = () => { location.href = "checkout.html"; };
 }

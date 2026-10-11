@@ -11,5 +11,4 @@ document.addEventListener("DOMContentLoaded", () => {
   initSearch(); renderCart();
   if (window.pageInit) window.pageInit();
   const anim = document.createElement("script"); anim.src = "js/features/animations.js"; document.body.appendChild(anim); // animations
-  const bc = document.createElement("script"); bc.src = "js/features/brand-cards.js"; document.body.appendChild(bc); // side brand cards
 });

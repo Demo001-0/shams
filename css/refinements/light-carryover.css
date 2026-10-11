@@ -1,0 +1,6 @@
+/* css/refinements/light-carryover.css
+   Light-mode rules that used to live inside the dark-theme files (those files are now commented out in main.css). */
+.header-actions{align-items:center}
+#mini .macts{align-items:center;gap:8px}
+.features .fi{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin:0 auto 16px;background:#b9ae9c;color:#4b4639}
+.features .fi svg{width:27px;height:27px}

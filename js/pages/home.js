@@ -153,3 +153,24 @@ window.pageInit = () => {
   stage.addEventListener("keydown", e => { if (e.key === "ArrowRight") { go(1); play(); } if (e.key === "ArrowLeft") { go(-1); play(); } });
   layout(0); dots[0].classList.add("active"); play();
 };
+
+/* ---- 3D background behind the splash header (home only) + gentle mouse parallax on both 3D scenes ---- */
+document.addEventListener("DOMContentLoaded", () => { // registered after bootstrap.js, so layout() has already built the header
+  const hdr = document.querySelector(".home-splash .header");
+  if (hdr && !hdr.querySelector(".h3d")) {
+    hdr.insertAdjacentHTML("afterbegin",
+      '<div class="h3d hd" aria-hidden="true"><div class="h3d-scene"><i class="r r3"></i><i class="o o1"></i><i class="o o2"></i><i class="o o3"></i><i class="o o4"></i></div></div>');
+  }
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  [document.querySelector(".hero2"), hdr].forEach(host => {
+    const scene = host && host.querySelector(".h3d-scene");
+    if (!scene) return;
+    host.addEventListener("pointermove", e => {
+      if (e.pointerType === "touch") return;
+      const r = host.getBoundingClientRect();
+      scene.style.setProperty("--tx", ((e.clientX - r.left) / r.width - 0.5) * 8);
+      scene.style.setProperty("--ty", (0.5 - (e.clientY - r.top) / r.height) * 6);
+    }, { passive: true });
+    host.addEventListener("pointerleave", () => { scene.style.setProperty("--tx", 0); scene.style.setProperty("--ty", 0); });
+  });
+});

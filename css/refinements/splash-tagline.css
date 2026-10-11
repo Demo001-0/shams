@@ -22,23 +22,23 @@
 }
 
 /* sun takes the exact pink of the SHAMS wordmark */
-.logo{color:#e57193}
-.header .logo svg,#mini .msun svg{fill:#e57193}
-.header .logo svg line,#mini .msun svg line{stroke:#e57193}
+.logo{color:#8c8373}
+.header .logo svg,#mini .msun svg{fill:#8c8373}
+.header .logo svg line,#mini .msun svg line{stroke:#8c8373}
 
 /* lookbook on phones: taller tiles, lighter overlay, captions that wrap */
 @media(max-width:820px){
   .lk-grid{grid-auto-rows:clamp(210px,62vw,340px);gap:10px}
   .lk-tile.t1{grid-column:span 2;grid-row:span 1}
-  .lk-tile::before{background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(140,45,80,.5) 100%)}
+  .lk-tile::before{background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(67,63,52,.5) 100%)}
   .lk-cap{left:12px;right:10px;bottom:12px;font-size:11px;letter-spacing:.13em;line-height:1.4}
   .lk-cap::before{width:20px;margin-bottom:7px}
   .lk-sub{padding:0 6px}
 }
 
 
-/* home splash order: wordmark + "Cosmetics" on top, the sun underneath (cards flank the sun) */
-.home-splash .header .logo img{order:0;margin-top:0}
-.home-splash .header .logo .sub{order:1}
-.home-splash .header .logo svg{order:2;margin-top:90px}
-@media(max-width:820px){.home-splash .header .logo svg{margin-top:64px}}
+/* home splash order (swapped): the sun on top, then the SHAMS wordmark + "Cosmetics" underneath */
+.home-splash .header .logo svg{order:0;margin-top:0}
+.home-splash .header .logo img{order:1;margin-top:70px}
+.home-splash .header .logo .sub{order:2}
+@media(max-width:820px){.home-splash .header .logo img{margin-top:48px}}

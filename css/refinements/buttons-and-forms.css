@@ -3,19 +3,19 @@
 .float-card .btn.solid{
   display:inline-flex;align-items:center;gap:9px;
   padding:11px 22px 11px 18px;border:0;border-radius:999px;
-  background:linear-gradient(135deg,#e07b9a 0%,#c0517a 55%,#a93d66 100%);
-  color:#fff;font-size:12px;letter-spacing:.14em;white-space:nowrap;
-  box-shadow:0 8px 18px rgba(170,55,100,.4),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(0,0,0,.08);
-  text-shadow:0 1px 1px rgba(90,20,50,.25);
+  background:linear-gradient(135deg,#8f8675 0%,#756b5b 55%,#5d5648 100%);
+  color:#ffffff;font-size:12px;letter-spacing:.14em;white-space:nowrap;
+  box-shadow:0 8px 18px rgba(90,83,70,.4),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(0,0,0,.08);
+  text-shadow:0 1px 1px rgba(51,59,54,.25);
   transition:transform .25s var(--ease),box-shadow .25s,filter .25s;
 }
 .float-card .btn.solid::before{
   content:"";width:16px;height:16px;flex:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8h14l-1 12H6L5 8z'/%3E%3Cpath d='M9 8V6.5a3 3 0 016 0V8'/%3E%3C/svg%3E") center/contain no-repeat;
 }
-.float-card .btn.solid:hover{background:linear-gradient(135deg,#e88aa8 0%,#c9587f 55%,#b1426d 100%);color:#fff;transform:translateY(-2px);box-shadow:0 12px 24px rgba(170,55,100,.48),inset 0 1px 0 rgba(255,255,255,.55)}
-.float-card .btn.solid:active{transform:translateY(0) scale(.97);box-shadow:0 4px 10px rgba(170,55,100,.35),inset 0 1px 0 rgba(255,255,255,.4)}
-.float-card .btn.solid[disabled]{background:linear-gradient(135deg,#d9c4cb,#bfa8b0);box-shadow:none;transform:none}
+.float-card .btn.solid:hover{background:linear-gradient(135deg,#999182 0%,#7e7562 55%,#645c4e 100%);color:#ffffff;transform:translateY(-2px);box-shadow:0 12px 24px rgba(90,83,70,.48),inset 0 1px 0 rgba(255,255,255,.55)}
+.float-card .btn.solid:active{transform:translateY(0) scale(.97);box-shadow:0 4px 10px rgba(90,83,70,.35),inset 0 1px 0 rgba(255,255,255,.4)}
+.float-card .btn.solid[disabled]{background:linear-gradient(135deg,#a59f91,#948c7c);box-shadow:none;transform:none}
 @media(max-width:820px){
   .float-card .fc a{grid-column:1/-1;grid-row:1}
   .float-card .fc .price{grid-column:1;grid-row:2;white-space:nowrap;align-self:center}
@@ -32,24 +32,24 @@
 .btn.full{display:flex;width:100%}
 
 /* filled */
-.btn.solid{border:1.5px solid transparent;color:#fff;
-  background:linear-gradient(135deg,#e07b9a 0%,#c0517a 55%,#a93d66 100%);
-  box-shadow:0 8px 18px rgba(170,55,100,.38),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(0,0,0,.08);
-  text-shadow:0 1px 1px rgba(90,20,50,.25)}
-.btn.solid:hover,.hero2 .btn.solid:hover{color:#fff;background:linear-gradient(135deg,#e88aa8 0%,#c9587f 55%,#b1426d 100%);
-  transform:translateY(-2px);box-shadow:0 12px 24px rgba(170,55,100,.46),inset 0 1px 0 rgba(255,255,255,.55)}
-.btn.solid:active{transform:translateY(0) scale(.97);box-shadow:0 4px 10px rgba(170,55,100,.35),inset 0 1px 0 rgba(255,255,255,.4)}
+.btn.solid{border:1.5px solid transparent;color:#ffffff;
+  background:linear-gradient(135deg,#8f8675 0%,#756b5b 55%,#5d5648 100%);
+  box-shadow:0 8px 18px rgba(90,83,70,.38),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(0,0,0,.08);
+  text-shadow:0 1px 1px rgba(51,59,54,.25)}
+.btn.solid:hover,.hero2 .btn.solid:hover{color:#ffffff;background:linear-gradient(135deg,#999182 0%,#7e7562 55%,#645c4e 100%);
+  transform:translateY(-2px);box-shadow:0 12px 24px rgba(90,83,70,.46),inset 0 1px 0 rgba(255,255,255,.55)}
+.btn.solid:active{transform:translateY(0) scale(.97);box-shadow:0 4px 10px rgba(90,83,70,.35),inset 0 1px 0 rgba(255,255,255,.4)}
 
 /* outline / ghost */
 .btn:not(.solid){border:1.5px solid currentColor;background:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
 .btn:not(.solid):hover,.hero2 .btn:not(.solid):hover,.hero2 .btn.ghost:hover{
-  color:#fff;border-color:transparent;transform:translateY(-2px);
-  background:linear-gradient(135deg,#e07b9a 0%,#c0517a 55%,#a93d66 100%);
-  box-shadow:0 12px 24px rgba(170,55,100,.4),inset 0 1px 0 rgba(255,255,255,.5)}
+  color:#ffffff;border-color:transparent;transform:translateY(-2px);
+  background:linear-gradient(135deg,#8f8675 0%,#756b5b 55%,#5d5648 100%);
+  box-shadow:0 12px 24px rgba(90,83,70,.4),inset 0 1px 0 rgba(255,255,255,.5)}
 .btn:not(.solid):active{transform:translateY(0) scale(.97)}
 
 /* disabled */
-.btn[disabled],.btn.solid[disabled]{background:linear-gradient(135deg,#d9c4cb,#bfa8b0);box-shadow:none;transform:none;color:#fff;opacity:.8}
+.btn[disabled],.btn.solid[disabled]{background:linear-gradient(135deg,#a59f91,#948c7c);box-shadow:none;transform:none;color:#ffffff;opacity:.8}
 
 /* bag icon on every "add to cart" */
 .btn.add::before{content:"";width:16px;height:16px;flex:none;
@@ -60,15 +60,15 @@
 /* newsletter */
 .footer form{gap:8px}
 .footer input{border-radius:999px;padding:12px 18px}
-.footer form button{border:0;border-radius:999px;padding:0 24px;color:#fff;
-  background:linear-gradient(135deg,#e07b9a,#c0517a 55%,#a93d66);
+.footer form button{border:0;border-radius:999px;padding:0 24px;color:#ffffff;
+  background:linear-gradient(135deg,#8f8675,#756b5b 55%,#5d5648);
   box-shadow:0 6px 14px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.4);
   transition:transform .25s var(--ease),box-shadow .25s,filter .25s}
-.footer form button:hover{background:linear-gradient(135deg,#e88aa8,#c9587f 55%,#b1426d);border:0;transform:translateY(-2px)}
+.footer form button:hover{background:linear-gradient(135deg,#999182,#7e7562 55%,#645c4e);border:0;transform:translateY(-2px)}
 .footer form button:active{transform:scale(.96)}
 
 /* quantity stepper to match */
-.qty{border-radius:999px;overflow:hidden;border-color:rgba(90,58,68,.45)}
-.qty button{transition:background .2s}.qty button:hover{background:rgba(224,123,154,.18)}
+.qty{border-radius:999px;overflow:hidden;border-color:rgba(72,68,56,.45)}
+.qty button{transition:background .2s}.qty button:hover{background:rgba(143,134,117,.18)}
 .footer form button{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.12em;font-size:12px}
 

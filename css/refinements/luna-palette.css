@@ -1,0 +1,105 @@
+/* css/refinements/luna-palette.css — palette matched to lunacollectionseg.com: light warm-grey page, olive bands, deep green-black footer. Loaded LAST. */
+
+/* announcement bars */
+.bar.one,.bar.ann{background:#706853;color:#ffffff}
+.bar.ann .ann-dot{color:#ffffff}
+.bar.two{background:#2c3530}
+
+/* olive hero band (replaces the animated grey gradient) */
+.hero,.banner{background:#706853;animation:none}
+.hero2 h1,.hero2 p,.hero2 .hero-copy,.banner h2,.banner p{color:#efecec!important;-webkit-text-fill-color:currentColor}
+.hero2 h1::after{background:#efecec}
+.hero-tag{background:rgba(255,255,255,.14);color:#efecec!important}
+.hero2 .btn.solid{background:#efecec;color:#2c3530;border-color:#efecec}
+.hero2 .btn.ghost{background:transparent;color:#efecec;border-color:rgba(239,236,236,.7)}
+.hero2 .btn.solid:hover{background:#2c3530;color:#ffffff;border-color:#2c3530}
+.hero2 .btn.ghost:hover{background:#efecec;color:#2c3530}
+.dots button{background:rgba(255,255,255,.35)}
+.dots button.active{background:#efecec}
+.h3d .r{border-color:rgba(255,255,255,.22)}
+.arch,.hero-img{background:#8c8373}
+
+/* light cards / surfaces */
+.card,.cat{background:#f3f1f0;border-color:#e3e0de}
+.sale{background:linear-gradient(120deg,#f3f1f0 0%,#e4e0dc 100%)}
+.cc-img{background:#e3e0de}
+.ccard{background:linear-gradient(160deg,#ffffff 0%,#e8e5e2 100%)}
+
+/* deep green-black footer */
+.footer{background:#2c3530}
+
+/* no 3D rings in the hero */
+.h3d .r{display:none}
+
+/* flat buttons: no drop-shadows / inner highlights (matches the flat Luna site) */
+.btn,.btn:hover,.btn:active,.btn.solid,.btn.solid:hover,.btn.solid:active,.btn:not(.solid),.btn:not(.solid):hover,
+.float-card .btn,.float-card .btn.solid,.float-card .btn.solid:hover,.float-card .btn.solid:active,
+.hero2 .btn,.hero2 .btn:hover,.footer form button,.footer form button:hover,button.add,.card .btn,.card button,.drawer .btn,.drawer button{
+  box-shadow:none!important;text-shadow:none!important;filter:none!important}
+.btn.solid,.float-card .btn.solid{background:var(--accent);color:#ffffff;border-color:var(--accent)}
+.btn.solid:hover,.float-card .btn.solid:hover{background:#2c3530;border-color:#2c3530;color:#ffffff}
+.btn:not(.solid){background:transparent}
+.hero2 .btn.solid{background:#efecec;color:#2c3530;border-color:#efecec}
+.hero2 .btn.solid:hover{background:#2c3530;color:#ffffff;border-color:#2c3530}
+.hero2 .btn.ghost{background:transparent}
+.footer form button{background:#706853;color:#ffffff}
+.footer form button:hover{background:#efecec;color:#2c3530}
+
+/* ticker icons + separators visible on the olive bar */
+.bar.ann .ann-ico{color:#ffffff}
+.bar.ann .ann-ico svg{width:22px;height:22px;stroke:#ffffff}
+.bar.ann .ann-dot{background:#ffffff;opacity:.4}
+
+/* original rounded corners are back for containers; only BUTTONS stay square (Shop by category untouched) */
+.btn,.add,.footer form button,.drawer .btn,.card button:not(.dots button){border-radius:8px!important}
+.hero2 .btn,.hero-actions .btn{border-radius:0!important}
+.float-card .btn{border-radius:8px!important}
+
+
+/* hero: move the big orb away from the sun (bottom-right instead of top-right) */
+.hero2 .h3d .o3{right:4%;top:auto;bottom:-30px}
+
+/* hero: move the big pearl away from the sun — now sits half-cropped at the bottom edge */
+.hero2 .h3d .o3{left:40%;right:auto;top:auto;bottom:-46px}
+
+/* footer newsletter: input and button share the same corners */
+.footer input,.footer form input{border-radius:8px!important}
+
+/* hero product card: calmer glass — no sweeping streak / top gloss, soft frosted look */
+.float-card::before,.float-card::after{display:none}
+.float-card{
+  background:linear-gradient(160deg,rgba(236,233,230,.88),rgba(222,218,214,.82));
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 10px 26px rgba(60,55,42,.16),inset 0 1px 0 rgba(255,255,255,.6)}
+.float-card h4,.float-card .price{text-shadow:none}
+
+/* hero card "Add to cart": fixed dark green in every state */
+.float-card .btn,.float-card .btn.solid,.float-card .btn:hover,.float-card .btn.solid:hover,.float-card .btn:active,.float-card .btn:focus{
+  background:#2c3530!important;border-color:#2c3530!important;color:#ffffff!important;transform:none!important}
+.float-card .btn svg{stroke:#ffffff}
+
+/* product page: one font family + slightly larger small text */
+html:root .product :is(h1,.price,.price s,p,.desc,li,.qty span,.qty button){font-family:var(--font-head),'Tajawal',serif}
+html:root .product .price{font-size:24px;letter-spacing:.03em}
+html:root .product .price s{font-size:18px}
+html:root .product > div:last-child > p:not(.desc){font-size:16px!important;color:var(--tx-soft)}
+html:root .product .desc{font-size:19px;line-height:1.9}
+html:root .product ul{font-size:17px;line-height:1.9;color:var(--tx-soft)}
+html:root .qty{border-radius:8px;overflow:hidden;border-color:var(--ink)}
+html:root .qty span{font-size:17px}
+html:root .crumbs{font-size:15px}
+
+/* "Add to cart" on the product page: sharp corners */
+.product .add,#add{border-radius:0!important}
+html:root .qty{border-radius:0!important}
+
+/* shop: readable hero on the olive band + Marcellus on the whole page */
+html:root .collection-hero h1{color:#efecec!important;-webkit-text-fill-color:currentColor}
+html:root .collection-hero p{color:#e3dfd8!important;font-size:19px;opacity:1}
+html:root .collection-hero p,html:root .toolbar,html:root .toolbar :is(*,select,summary,label,span,input,button),html:root .dropdown :is(*,label,span,input){font-family:var(--font-head),'Tajawal',serif}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* cart drawer: Marcellus on every field (Tajawal only as Arabic fallback) */
+html:root .drawer :is(*,button,small,span,p,b,a,div){font-family:var(--font-head),'Tajawal',serif}
+html:root .drawer small{font-size:14px}
