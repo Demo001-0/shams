@@ -108,3 +108,12 @@ html:root .drawer small{font-size:14px}
 html:root .info-page :is(*,p,li,a,b,label,input,textarea,button,select){font-family:var(--font-head),'Tajawal',serif}
 html:root .info-page :is(p,li){font-size:18px;line-height:1.85}
 html:root .info-page :is(input,textarea)::placeholder{font-family:var(--font-head),'Tajawal',serif}
+
+/* hero "Shop now / View product" buttons: desktop only */
+@media(max-width:820px){.hero-actions{display:none!important}}
+
+/* header pearls (home splash): more transparent, desktop + phone */
+.home-splash .header .h3d.hd .o{opacity:.3!important;box-shadow:0 10px 24px rgba(60,55,42,.08)}
+
+/* phone hero: small pearl moved to the top-left corner, away from the sun and the title */
+@media(max-width:820px){.hero2 .h3d:not(.hd) .o2{left:4%;right:auto;top:2.5%;bottom:auto}}
