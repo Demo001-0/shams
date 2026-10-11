@@ -103,3 +103,8 @@ html:root .collection-hero p,html:root .toolbar,html:root .toolbar :is(*,select,
 /* cart drawer: Marcellus on every field (Tajawal only as Arabic fallback) */
 html:root .drawer :is(*,button,small,span,p,b,a,div){font-family:var(--font-head),'Tajawal',serif}
 html:root .drawer small{font-size:14px}
+
+/* info pages (About / Policy / Contact): Marcellus on all text, forms included */
+html:root .info-page :is(*,p,li,a,b,label,input,textarea,button,select){font-family:var(--font-head),'Tajawal',serif}
+html:root .info-page :is(p,li){font-size:18px;line-height:1.85}
+html:root .info-page :is(input,textarea)::placeholder{font-family:var(--font-head),'Tajawal',serif}
