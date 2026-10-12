@@ -5,7 +5,7 @@
   "use strict";
   var q = /[?&]lang=(ar|en)/.exec(location.search), lang = q && q[1];
   try { if (lang) localStorage.setItem("shams-lang", lang); else lang = localStorage.getItem("shams-lang"); } catch (e) {}
-  lang = lang === "en" ? "en" : "ar";   /* Arabic is the default; English only if chosen */
+  lang = lang === "ar" ? "ar" : "en";   /* English is the default; Arabic only if chosen */
   var h = document.documentElement;
   h.lang = lang; h.dir = lang === "ar" ? "rtl" : "ltr";
   window.__lang = lang;

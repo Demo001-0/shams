@@ -1,0 +1,33 @@
+/* css/refinements/shams-nav.css — the main Shams site navigation (pill bar + burger drawer) inside the cosmetics header */
+.header{padding:10px 0}
+.header-top{gap:16px;min-height:64px}
+.sn{display:flex;align-items:center;gap:10px;font-family:"Poppins",sans-serif}
+.sn-frame{display:flex;align-items:center;padding:5px;border:1px solid var(--line);border-radius:999px;background:#fff;box-shadow:0 6px 18px -12px rgba(20,20,20,.25)}
+.sn .snl{position:relative;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;font-size:15px;font-weight:500;line-height:1.4;color:#3a3a3a;text-decoration:none;border-radius:999px;transition:color .2s,background .2s;white-space:nowrap}
+.sn .snl+.snl::before{content:"";position:absolute;inset-inline-start:0;top:22%;bottom:22%;width:1px;background:var(--line);transition:opacity .2s}
+.sn .snl.active::before,.sn .snl.active+.snl::before,.sn .snl:hover::before,.sn .snl:hover+.snl::before{opacity:0}
+.sn .snl .nic{width:18px;height:18px;flex:none;color:#e2554b;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.sn .snl:hover .nic{transform:translateY(-2px) scale(1.15) rotate(-6deg)}
+.sn .snl:hover,.sn .snl.active{background:#fff4f1;color:#141414}
+.sn .snl.active{color:#b03a32;font-weight:700}
+.sn-lang{font:700 14px "Tajawal","Poppins",sans-serif;padding:10px 20px;border:2px solid var(--line);border-radius:999px;background:#fff;color:#141414;text-decoration:none;line-height:1.4;transition:border-color .2s,color .2s}
+.sn-lang:hover{border-color:#e2554b;color:#b03a32}
+.sn-quote{font-weight:700;font-size:14px;line-height:1.4;padding:10px 20px;border-radius:999px;background:#d1403a;color:#fff;text-decoration:none;box-shadow:0 10px 24px -10px rgba(238,49,36,.7);transition:background .2s,transform .2s;white-space:nowrap}
+.sn-quote:hover{background:#9b2a28;transform:translateY(-2px)}
+@media(min-width:821px){
+  .header-top>.sn{flex:1;justify-content:flex-end;margin-inline-start:auto}
+}
+@media(min-width:821px) and (max-width:1279px){.sn-lang{display:none}}
+@media(min-width:821px) and (max-width:1139px){.sn .snl{padding:8px 11px;font-size:14px}.sn .snl .nic{display:none}}
+@media(max-width:820px){
+  .sn{position:fixed;top:0;left:0;bottom:0;height:100dvh;width:min(340px,88vw);background:#fff;z-index:100;flex-direction:column;align-items:stretch;gap:0;padding:78px 20px 28px;transform:translateX(-100%);transition:transform .35s;overflow:auto}
+  .sn.open{transform:none;box-shadow:6px 0 30px rgba(0,0,0,.18)}
+  .sn-frame{flex-direction:column;align-items:stretch;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent}
+  .sn .snl{padding:14px 4px;font-size:20px;font-weight:700;border-bottom:1px solid var(--line);border-radius:0;color:#141414;background:transparent}
+  .sn .snl{gap:14px}
+  .sn .snl .nic{width:22px;height:22px}
+  .sn .snl+.snl::before{display:none}
+  .sn .snl:hover,.sn .snl.active{background:transparent}
+  .sn-lang{display:none}
+  .sn-quote{align-self:flex-start;margin-top:20px;padding:10px 22px}
+}

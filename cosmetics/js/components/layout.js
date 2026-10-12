@@ -1,5 +1,6 @@
 /* js/components/layout.js — Shared header, ticker, drawer, footer */
 function layout() {
+  const navIcons = { "index.html": '<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/>', "services.html": '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>', "products.html": '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>', "projects.html": '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/>', "about.html": '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>', "contact.html": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>' };
   const header = `
   <header class="header"><div class="container">
     <div class="header-top">
@@ -11,7 +12,7 @@ function layout() {
         <button class="icon-btn" id="openCart" aria-label="Cart">${icons.bag}<span class="cart-count" id="cartCount">0</span></button>
       </div>
     </div>
-    <nav class="nav" id="nav"><button class="icon-btn nav-close" id="closeNav" aria-label="Close menu">×</button>${navLinks.map(([h,t])=>`<a href="${h}" class="${h===page?'active':''}">${t}</a>`).join("")}</nav>
+    <nav class="sn" id="nav" aria-label="Main"><button class="icon-btn nav-close" id="closeNav" aria-label="Close menu">×</button><div class="sn-frame">${navLinks.map(([h,t])=>`<a class="snl${h.split("/").pop()===page?" active":""}" href="${h}"><svg class="nic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${navIcons[h.split("/").pop()]||""}</svg><span>${t}</span></a>`).join("")}</div><a class="sn-lang" href="../index.html?lang=ar" lang="ar">العربية</a><a class="sn-quote" href="../contact.html">Get a quote</a></nav>
   </div></header>
   <div class="search-panel" id="searchPanel"><div class="container">
     <input id="searchInput" placeholder="Search products..." autocomplete="off"><div class="search-results" id="searchResults"></div>

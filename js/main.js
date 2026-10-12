@@ -98,7 +98,22 @@
         </article>`).join("");
     },
     scope(el) {
-      el.innerHTML = SCOPE.map(([t, d]) => `<li class="reveal"><h3>${esc(t)}</h3>${d ? `<p>${esc(d)}</p>` : ""}</li>`).join("");
+      el.innerHTML = SCOPE.map(([t, d]) => `<li class="reveal" tabindex="0" role="button" aria-pressed="false"><div class="fl"><div class="ff"><h3>${esc(t)}</h3>${d ? `<p class="fp">${esc(d)}</p>` : ""}</div><div class="fb"><h3>${esc(t)}</h3>${d ? `<p>${esc(d)}</p>` : ""}</div></div></li>`).join("");
+      const flip = li => { const on = li.classList.toggle("flipped"); li.setAttribute("aria-pressed", on); };
+      el.addEventListener("click", e => { const li = e.target.closest("li"); if (li) flip(li); });
+      el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { const li = e.target.closest("li"); if (li) { e.preventDefault(); flip(li); } } });
+      /* phone only: a little wiggle hints that the cards flip */
+      const phone = matchMedia("(max-width: 760px)"), calm = matchMedia("(prefers-reduced-motion: reduce)");
+      if (phone.matches && !calm.matches && "IntersectionObserver" in window) {
+        const lis = [...el.children], vis = new Set();
+        const wig = li => { if (li.classList.contains("flipped")) return; li.classList.remove("wiggle"); void li.offsetWidth; li.classList.add("wiggle"); li.addEventListener("animationend", () => li.classList.remove("wiggle"), { once: true }); };
+        const io = new IntersectionObserver(es => es.forEach(en => {
+          const li = en.target;
+          if (en.isIntersecting) { vis.add(li); if (!li.dataset.w) { li.dataset.w = 1; setTimeout(() => wig(li), 1000 + lis.indexOf(li) % 4 * 140); } } else vis.delete(li);
+        }), { threshold: .6 });
+        lis.forEach(li => io.observe(li));
+        setInterval(() => { if (document.hidden || !vis.size) return; const a = [...vis].filter(l => !l.classList.contains("flipped")); if (a.length) wig(a[Math.floor(Math.random() * a.length)]); }, 4500);
+      }
     },
     partners(el) {
       el.innerHTML = PARTNERS.map(([f, n]) => `<div class="logo-tile reveal"><img src="assets/partners/${f}.png" alt="${esc(n)}" loading="lazy"></div>`).join("");
