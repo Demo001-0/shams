@@ -54,7 +54,7 @@ window.AR = {
   "Shop cosmetics ": "تسوّق مستحضرات التجميل ",
   "Shams": "شمس",
   "What we do": "ماذا نفعل",
-  "Six disciplines. One accountable team.": "ستة تخصصات فريق واحد مسؤول.",
+  "Six disciplines One accountable team.": "ستة تخصصات فريق واحد مسؤول.",
   "From a single supply order to a complete turnkey system, our MEP teams cover every stage of the job.": "من طلب توريد واحد إلى نظام متكامل جاهز للتسليم، تغطي فرق MEP لدينا كل مراحل العمل.",
   "Learn more ": "اعرف المزيد ",
   "How we work": "كيف نعمل",
@@ -91,7 +91,7 @@ window.AR = {
 
   /* ---------- services data ---------- */
   "Fire Protection": "الحماية من الحريق",
-  "Gaseous, aerosol and water-based suppression, pumps, valves and fire curtains — supplied, installed and commissioned.": "أنظمة إطفاء غازية وأيروسول ومائية، ومضخات وصمامات وستائر حريق — توريد وتركيب وتشغيل.",
+  "Scope of work: fire suppression, water systems, pumps, foam, fire alarm, kitchen protection, valves and fire curtains.": "نطاق العمل: أنظمة الإطفاء، والإطفاء المائي، ومضخات الحريق، والفوم، وإنذار الحريق، وحماية المطابخ، والصمامات، وستائر الحريق.",
   "FM-200, NOVEC & aerosol suppression": "إطفاء FM-200 وNOVEC والأيروسول",
   "Sprinklers & hose cabinets": "الرشاشات وصناديق خراطيم الحريق",
   "Kitchen fire suppression": "إطفاء حرائق المطابخ",
@@ -130,17 +130,17 @@ window.AR = {
   "Fire Alarm System": "نظام إنذار الحريق",
   "Addressable, Conventional and Suppression Release systems": "أنظمة العنونة والتقليدية وإطلاق الإطفاء",
   "Water Suppression System": "نظام الإطفاء المائي",
-  "Sprinklers · Hose Cabinet": "الرشاشات · صناديق الخراطيم",
+  "Sprinklers · Hose Cabinet": "الرشاشات · صناديق خراطيم الحريق",
   "Kitchen Fire Suppression Systems": "أنظمة إطفاء حرائق المطابخ",
-  "Dedicated protection for commercial kitchens": "حماية مخصصة للمطابخ التجارية",
+  
   "Fire Fighting Pump": "مضخات مكافحة الحريق",
-  "Electrical, Diesel and Jockey": "كهربائية وديزل وجوكي",
+  "Electrical, Diesel and Jockey": "كهربائية وديزل وجوكي (Jockey)",
   "Valve": "الصمامات",
-  "OS&Y Valves, Check Valve, Butterfly, NRS, Hydrant and Deluge": "صمامات OS&Y وعدم الرجوع والفراشة وNRS والحنفيات والغمر",
+  "OS&Y Valves, Check Valve, Butterfly, NRS, Hydrant and Deluge": "صمامات OS&Y، وصمامات عدم الرجوع، وصمامات الفراشة، وصمامات NRS، وحنفيات الحريق، وصمامات الغمر (Deluge)",
   "Foam System": "نظام الفوم",
-  "Foam-based fire protection": "حماية من الحريق بالفوم",
+  
   "Fire Curtain": "ستائر الحريق",
-  "Smoke and fire curtains": "ستائر الدخان والحريق",
+  
   "Our process": "منهجية عملنا",
   "From supply to handover.": "من التوريد حتى التسليم.",
   "Every project follows the same four stages — you can engage us for one, or for all of them.": "يمر كل مشروع بالمراحل الأربع نفسها — ويمكنك التعاقد معنا على مرحلة واحدة أو عليها جميعًا.",

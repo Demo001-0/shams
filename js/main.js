@@ -8,6 +8,10 @@
   const page = document.body.dataset.page || "home";
   const T = window.__t || (x => x);
   const LANG = window.__lang || "en";
+  const PHONES = SITE.phones || (SITE.phone ? [SITE.phone] : []);
+  const EMAILS = SITE.emails || (SITE.email ? [SITE.email] : []);
+  const telOf = p => p.replace(/[^\d+]/g, "");
+  const waOf = p => p.replace(/\D/g, "");
 
   /* ---------- icons ---------- */
   const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
@@ -46,13 +50,14 @@
       <a class="skip" href="#main">Skip to content</a>
       <header class="header" id="header"><div class="wrap">
         <a class="brand" href="index.html" aria-label="Shams — home"><img src="assets/images/logo.png" alt="Shams — Modern Sun for Contracting" width="170" height="40"></a>
+        <button type="button" class="lang-ico" id="langIco" lang="${LANG === "ar" ? "en" : "ar"}" aria-label="${LANG === "ar" ? "Switch to English" : "التبديل إلى العربية"}" data-no-i18n><span>${LANG === "ar" ? "EN" : "ع"}</span></button>
         <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span></button>
         <nav class="nav" id="nav" aria-label="Main">${links}<button type="button" class="lang-btn" id="langBtn" lang="${LANG === "ar" ? "en" : "ar"}" aria-label="${LANG === "ar" ? "Switch to English" : "التبديل إلى العربية"}" data-no-i18n>${LANG === "ar" ? "English" : "العربية"}</button><a class="btn btn-primary btn-sm" href="contact.html">Get a quote</a></nav>
       </div></header>`);
 
     const contactList = [
-      SITE.phone && `<li><a href="tel:${esc(SITE.phone.replace(/\s/g, ""))}">${esc(SITE.phone)}</a></li>`,
-      SITE.email && `<li><a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a></li>`,
+      ...PHONES.map(p => `<li><a href="tel:${esc(telOf(p))}" dir="ltr">${esc(p)}</a></li>`),
+      ...EMAILS.map(m => `<li><a href="mailto:${esc(m)}">${esc(m)}</a></li>`),
       `<li>${esc(SITE.city)}</li><li><a href="cosmetics/home.html">Shams Cosmetics →</a></li>`
     ].filter(Boolean).join("");
     document.body.insertAdjacentHTML("beforeend", `
@@ -61,13 +66,13 @@
           <div><a class="logo-plate" href="index.html"><img src="assets/images/logo.png" alt="Shams" width="153" height="36"></a>
             <p>${esc(T(SITE.tagline))} — ${T("supply, installation, testing and commissioning for fire protection, fire alarm, HVAC, low current, BMS and security.")}</p></div>
           <div><h4>Explore</h4><ul>${NAV.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join("")}</ul></div>
-          <div><h4>Services</h4><ul>${SERVICES.map(s => `<li><a href="services.html#${s.id}">${esc(s.title)}</a></li>`).join("")}</ul></div>
+          <div><h4>Services</h4><ul>${SERVICES.map(s => `<li><a href="services.html">${esc(s.title)}</a></li>`).join("")}</ul></div>
           <div><h4>Contact</h4><ul>${contactList}</ul></div>
         </div>
-        <div class="copy"><span>© ${new Date().getFullYear()} ${T("Shams")} — ${esc(T(SITE.tagline))}. ${T("All rights reserved.")}</span><span>${esc(SITE.arabicName)}</span></div>
+        <div class="copy"><span>© ${new Date().getFullYear()} ${T("Shams")} — ${esc(T(SITE.tagline))}. ${T("All rights reserved.")}</span></div>
       </div></footer>`);
 
-    $("#langBtn").addEventListener("click", () => window.__setLang && window.__setLang(LANG === "ar" ? "en" : "ar"));
+    ["#langBtn", "#langIco"].forEach(s => $(s).addEventListener("click", () => window.__setLang && window.__setLang(LANG === "ar" ? "en" : "ar")));
     const hdr = $("#header"), btn = $("#menuBtn");
     const onScroll = () => hdr.classList.toggle("scrolled", scrollY > 8);
     onScroll(); addEventListener("scroll", onScroll, { passive: true });
@@ -84,22 +89,16 @@
       const items = SERVICES.map(s => `<span>${esc(s.title)}</span>`).join("");
       el.innerHTML = `<div class="ticker-track">${items}${items}${items}${items}</div>`;
     },
-    disciplines(el) {
-      el.innerHTML = SERVICES.map((s, i) => `
-        <a class="disc ${s.color === "blue" ? "blue" : ""} reveal" href="services.html#${s.id}">
-          <span class="num">0${i + 1}</span><span class="ico">${ICON[s.icon]}</span>
-          <h3 class="h3">${esc(s.title)}</h3><p>${esc(s.summary)}</p>
-          <span class="link-arrow">Learn more ${ICON.arrow}</span></a>`).join("");
-    },
     "services-detail"(el) {
-      el.innerHTML = SERVICES.map(s => `
+      const jump = `<nav class="svc-jump" aria-label="Services">${SERVICES.map((s, i) => `<a href="#${s.id}">${esc(s.title)}</a>`).join("")}</nav>`;
+      el.innerHTML = jump + SERVICES.map((s, i) => `
         <article class="svc-detail ${s.color === "blue" ? "blue" : ""} reveal" id="${s.id}">
-          <div><span class="ico">${ICON[s.icon]}</span><h3 class="h2" style="font-size:clamp(26px,3vw,34px)">${esc(s.title)}</h3></div>
-          <div><p class="lead">${esc(s.summary)}</p><ul>${s.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul></div>
+          <div class="svc-head"><span class="ico">${ICON[s.icon]}</span><small class="svc-no">0${i + 1}</small><h3 class="h2">${esc(s.title)}</h3></div>
+          <div class="svc-body"><p class="lead">${esc(s.summary)}</p><ul>${s.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul></div>
         </article>`).join("");
     },
     scope(el) {
-      el.innerHTML = SCOPE.map(([t, d]) => `<li class="reveal"><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("");
+      el.innerHTML = SCOPE.map(([t, d]) => `<li class="reveal"><h3>${esc(t)}</h3>${d ? `<p>${esc(d)}</p>` : ""}</li>`).join("");
     },
     partners(el) {
       el.innerHTML = PARTNERS.map(([f, n]) => `<div class="logo-tile reveal"><img src="assets/partners/${f}.png" alt="${esc(n)}" loading="lazy"></div>`).join("");
@@ -147,9 +146,8 @@
     },
     contact(el) {
       const rows = [
-        SITE.phone && ["phone", "Phone", `<a href="tel:${esc(SITE.phone.replace(/\s/g, ""))}">${esc(SITE.phone)}</a>`],
-        SITE.whatsapp && ["whatsapp", "WhatsApp", `<a href="https://wa.me/${esc(SITE.whatsapp)}" rel="noopener">Chat with us</a>`],
-        SITE.email && ["mail", "Email", `<a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`],
+        PHONES.length && ["phone", "Phone", `<ul class="c-list">${PHONES.map(p => `<li><a class="c-main" href="tel:${esc(telOf(p))}" dir="ltr">${esc(p)}</a><a class="c-chip" href="https://wa.me/${esc(waOf(p))}" target="_blank" rel="noopener" aria-label="WhatsApp ${esc(p)}">${ICON.whatsapp}<span>WhatsApp</span></a></li>`).join("")}</ul>`],
+        EMAILS.length && ["mail", "Email", `<ul class="c-list">${EMAILS.map(m => `<li><a class="c-main" href="mailto:${esc(m)}" dir="ltr">${esc(m)}</a></li>`).join("")}</ul>`],
         ["pin", "Location", `<span>${esc(SITE.address || SITE.city)}</span>${SITE.address ? `<br><span class="muted">${esc(SITE.city)}</span>` : ""}`],
         ["check", "What we cover", `<span>Fire protection · Fire alarm · HVAC · Low current · BMS · Security</span>`],
         ["clock", "Response time", `<span>We reply to every request, usually within one working day.</span>`],
@@ -180,15 +178,24 @@
       const d = Object.fromEntries(new FormData(f));
       const body = `${d.message}\n\n— ${d.name}${d.company ? " (" + d.company + ")" : ""}\n${T("Phone")}: ${d.phone || "-"}\n${T("Email")}: ${d.email}\n${T("Service")}: ${d.service || "-"}`;
       const st = $("#formStatus");
-      if (SITE.email) {
-        location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(T("Quote request — ") + (d.service || T("General")))}&body=${encodeURIComponent(body)}`;
-        st.textContent = T("Opening your email app… if nothing happens, write to us directly at ") + SITE.email + ".";
+      if (EMAILS.length) {
+        location.href = `mailto:${EMAILS.join(",")}?subject=${encodeURIComponent(T("Quote request — ") + (d.service || T("General")))}&body=${encodeURIComponent(body)}`;
+        st.textContent = T("Opening your email app… if nothing happens, write to us directly at ") + EMAILS[0] + ".";
       } else {
         st.textContent = T("Thank you — your message is ready. (Site owner: add an email address in js/data/site.js to receive requests.)");
       }
       st.hidden = false;
     });
   }
+
+  /* ---------- email links: phones open the mail app; desktops open Gmail compose (no mail client needed) ---------- */
+  document.addEventListener("click", e => {
+    const a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!a || /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)) return;
+    e.preventDefault();
+    const to = decodeURIComponent(a.getAttribute("href").slice(7).split("?")[0]);
+    window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(to), "_blank", "noopener");
+  });
 
   /* ---------- reveal on scroll ---------- */
   function reveal() {

@@ -21,11 +21,11 @@
       curtain.classList.add("hold"); root.classList.remove("pt");
       const t0 = performance.now(); let gone = false;
       const open = () => { if (gone) return; gone = true;
-        const wait = Math.max(0, 220 - (performance.now() - t0));
+        const wait = Math.max(0, 40 - (performance.now() - t0));
         setTimeout(() => { curtain.classList.remove("hold"); void curtain.offsetWidth; curtain.classList.add("out");
-          setTimeout(() => curtain.remove(), 900); }, wait); };
+          setTimeout(() => curtain.remove(), 350); }, wait); };
       if (document.readyState === "complete") open(); else addEventListener("load", open);
-      setTimeout(open, 2500);
+      setTimeout(open, 1200);
     } else { root.classList.remove("pt"); }
     addEventListener("pageshow", e => { if (e.persisted) { curtain.remove(); root.classList.remove("pt"); } });
     document.addEventListener("click", e => {
@@ -41,7 +41,7 @@
       curtain.classList.remove("out", "hold");
       curtain.style.setProperty("--cx", e.clientX + "px"); curtain.style.setProperty("--cy", e.clientY + "px");
       void curtain.offsetWidth; curtain.classList.add("cover");
-      setTimeout(() => { location.href = a.href; }, 520);
+      setTimeout(() => { location.href = a.href; }, 160);
     });
   } else { root.classList.remove("pt"); }
 
@@ -75,6 +75,13 @@
   $$(".stat").forEach(el => el.classList.add("zoom"));
   if (root.dir === "rtl") $$(".from-l,.from-r").forEach(el => { const l = el.classList.contains("from-l"); el.classList.toggle("from-l", !l); el.classList.toggle("from-r", l); });
 
+  /* scope cards: slide in from their own side, rows cascade */
+  $$(".scope").forEach(ul => $$(":scope > li", ul).forEach((el, i) => {
+    const first = i < 4, rtl = root.dir === "rtl";
+    el.classList.add(first === rtl ? "from-r" : "from-l", "sc-side");
+    el.style.setProperty("--d", (i % 4) * 0.14 + "s");
+  }));
+
   /* ---------- headline word-rise ---------- */
   function splitWords(h) {
     const walk = n => {
@@ -94,12 +101,31 @@
     };
     h.__n = 0; walk(h);
   }
-  const heads = $$(".page-hero .h1, .sec-head .h2, .cta h2, .splash-lead").filter(h => !h.matches("[data-no-i18n]"));
-  heads.forEach(splitWords);
-  const hio = new IntersectionObserver(es => es.forEach(en => {
-    if (en.isIntersecting) { en.target.classList.add("words-in"); hio.unobserve(en.target); }
-  }), { threshold: .2 });
-  heads.forEach(h => { h.classList.contains("splash-lead") ? setTimeout(() => h.classList.add("words-in"), 900) : hio.observe(h); });
+  const lead = $(".splash-lead");
+  if (lead) { splitWords(lead); setTimeout(() => lead.classList.add("words-in"), 900); }
+
+  /* ---------- typewriter headings (every h1 / h2) ---------- */
+  const twHeads = $$("h1, h2").filter(h => !h.closest("[data-no-i18n]") && !h.classList.contains("sr-only") && !h.closest(".footer") && h.textContent.trim());
+  function typeIn(h) {
+    const nodes = []; const walk = n => n.childNodes.forEach(c => { if (c.nodeType === 3) { if (c.textContent.length) nodes.push([c, Array.from(c.textContent)]); } else if (c.nodeType === 1) walk(c); });
+    walk(h);
+    const total = nodes.reduce((n, x) => n + x[1].length, 0); if (!total) return;
+    h.style.minHeight = h.getBoundingClientRect().height + "px";   /* no layout jump while typing */
+    h.setAttribute("aria-label", h.textContent.replace(/\s+/g, " ").trim());
+    nodes.forEach(x => { x[0].textContent = ""; });
+    h.classList.add("tw-typing"); h.style.visibility = "visible";
+    const step = Math.max(14, Math.min(42, 1500 / total)); let i = 0, ni = 0, ci = 0;
+    (function tick() {
+      if (ni >= nodes.length) { h.classList.remove("tw-typing"); h.style.minHeight = ""; return; }
+      const [node, chars] = nodes[ni]; ci++; node.textContent = chars.slice(0, ci).join("");
+      if (ci >= chars.length) { ni++; ci = 0; }
+      setTimeout(tick, step);
+    })();
+  }
+  const tio = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { tio.unobserve(en.target); setTimeout(() => typeIn(en.target), 120); }
+  }), { threshold: .35 });
+  twHeads.forEach(h => { h.style.visibility = "hidden"; tio.observe(h); });
 
   /* ---------- counters ---------- */
   const cio = new IntersectionObserver(es => es.forEach(en => {
