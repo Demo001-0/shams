@@ -1,0 +1,9 @@
+/* css/refinements/darker-text.css — extra text darkening for spots that don't use the --tx tokens */
+html:root .logo .sub{color:#4a4a4a}
+html:root .lk-sub,html:root .hero-copy p,html:root .splash-copy p{color:var(--tx-soft)}
+
+/* features strip icons (above the footer): solid dark circle + light icon so they read clearly */
+html:root .features .fi{background:#4a4a4a;color:#ffffff;box-shadow:0 4px 12px rgba(23,11,11,.25)}
+html:root .features .fi svg{stroke:currentColor}
+html:root .features h4{color:#170b0b}
+html:root .features p{color:#4a4a4a}

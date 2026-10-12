@@ -1,0 +1,44 @@
+/* css/components/checkout.css — Checkout page */
+.checkout-page{padding:50px 0 90px}
+.co-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:start;margin-top:26px}
+.co-form h3,.co-card h3{font-family:var(--font-head);font-weight:400;font-size:20px;letter-spacing:.04em;margin:26px 0 12px}
+.co-form h3:first-child,.co-card h3:first-child{margin-top:0}
+.co-field{display:grid;gap:6px;margin-bottom:14px}
+.co-field label{font-size:15px;color:var(--tx-soft,#4a4a4a)}
+.co-field small,.co-pay small{opacity:.7}
+.co-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.co-form input:not([type=radio]),.co-form select,.co-form textarea{width:100%;padding:14px;border:1px solid var(--line);border-radius:8px;background:#ffffff;font-family:inherit;font-size:16px;color:var(--ink)}
+.co-form input:focus,.co-form select:focus,.co-form textarea:focus{outline:2px solid #b03a32;outline-offset:1px}
+.co-form .bad{border-color:#94302f;background:#fbf1ee}
+.co-pay{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid #b03a32;border-radius:8px;background:#ffffff;cursor:pointer}
+.co-pay input{margin-top:5px;accent-color:#b03a32}
+.co-pay span{display:grid;gap:2px;font-size:17px}
+.co-err{min-height:22px;margin:14px 0 8px;color:#94302f;font-size:15px}
+.co-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:26px}
+.co-summary{position:sticky;top:90px}
+.co-line{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.co-thumb{position:relative;width:64px;aspect-ratio:4/5;border-radius:6px;overflow:visible}
+.co-thumb>svg,.co-thumb>img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+.co-badge{position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#b03a32;color:#fff;font-size:12px;display:grid;place-items:center}
+.co-name{font-family:var(--font-head);font-size:16px;letter-spacing:.03em}
+.co-price{font-size:16px}
+.co-row{display:flex;justify-content:space-between;padding:10px 0;font-size:16px}
+.co-total{border-top:1px solid var(--line);margin-top:6px;padding-top:16px;font-family:var(--font-head);font-size:21px}
+.co-hint{margin-top:10px;font-size:15px}
+.co-edit{display:inline-block;margin-top:16px;font-size:15px;text-decoration:underline}
+.co-empty,.co-done{max-width:640px;margin:0 auto;text-align:center}
+.co-empty .btn,.co-done>.btn{margin-top:18px}
+.co-order-no{font-size:20px;margin-bottom:8px}
+.co-done .co-card{text-align:left;margin:26px 0 8px}
+.co-done .co-card p{margin-bottom:6px;font-size:16px}
+@media(max-width:860px){.co-grid{grid-template-columns:1fr;gap:28px}.co-summary{position:static;order:-1}.co-two{grid-template-columns:1fr}}
+.co-title{font-family:var(--font-head);font-weight:400;font-size:clamp(28px,3.6vw,40px);margin:0 0 8px}
+.co-empty p{margin-bottom:6px}
+
+/* Marcellus on everything in checkout (Tajawal only as the Arabic fallback) */
+html:root .checkout-page,html:root .checkout-page :is(*,input,select,textarea,button,label,small,p,span,div,a,b){font-family:var(--font-head),'Tajawal',serif}
+html:root .checkout-page :is(input,textarea)::placeholder{font-family:var(--font-head),'Tajawal',serif}
+
+/* select arrow: pulled further inside the field */
+.co-form select{-webkit-appearance:none;appearance:none;padding-right:44px;
+  background:#ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%232c332f' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 18px center}

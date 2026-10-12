@@ -1,0 +1,13 @@
+/* css/motion/typewriter.css — Typewriter headings (realistic: each letter is struck instantly, a solid caret travels with the typing) */
+.tw .tww{display:inline-block;white-space:nowrap}
+.tw .c{position:relative;display:inline-block;opacity:0}
+.tw .c.on{opacity:1}                         /* hard cut — no fade, slide or blur, like a key strike */
+.tw .c.on.strike{animation:twstrike .12s ease-out}
+@keyframes twstrike{from{transform:translateY(1px)}to{transform:none}}   /* tiny key-press nudge */
+/* caret: thin solid bar in the text colour, sits right after the last typed letter, steady while typing */
+.tw .c.last::after,.tw .c.pre::before{content:"";position:absolute;top:10%;width:.07em;min-width:2px;height:82%;background:currentColor;opacity:.85}
+.tw .c.last::after{left:calc(100% + .04em)}
+.tw .c.pre::before{left:-.06em}
+/* when typing stops the caret blinks a few times, then goes away */
+.tw-done .c.last::after{animation:twend 2.1s steps(1) forwards}
+@keyframes twend{0%,34%,67%{opacity:.85}17%,50%,84%{opacity:0}100%{opacity:0}}

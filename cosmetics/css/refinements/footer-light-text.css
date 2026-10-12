@@ -1,0 +1,14 @@
+/* css/refinements/footer-light-text.css — footer sits on the olive Luna band (#4a4a4a), so its text must be light */
+html:root .footer{color:#ece7e5;border-top:0}
+html:root .footer h5{color:#ffffff}
+html:root .footer p{color:#ece7e5}
+html:root .footer a{color:#ece7e5}
+html:root .footer a:hover{color:#ffffff;text-decoration:underline}
+html:root .footer .copy{color:#bdbdbd;opacity:1;border-top:1px solid rgba(223,217,217,.35)}
+html:root .footer input{background:#ffffff;color:#170b0b}
+html:root .footer input::placeholder{color:#b03a32}
+
+/* text selection: clearly visible on both the light page and the dark footer */
+::selection{background:#4a4a4a;color:#ffffff}
+.footer ::selection,.footer::selection{background:#ffffff;color:#170b0b}
+html:root .footer p{color:#ffffff}

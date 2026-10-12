@@ -1,0 +1,18 @@
+/* css/base/tokens-and-reset.css — Design tokens (colours, fonts), reset, container */
+
+:root{
+  /* Luna Collections palette */
+  --bg:#ffffff; --card:#fff4f1; --ink:#170b0b; --brand:#808080; --hero:#b03a32;
+  --bar:#b03a32; --dark:#170b0b; --accent:#b03a32; --line:#ece7e5; --white:#ffffff;
+  --font-head:'Poppins',sans-serif;
+  --font-logo:'Poppins',sans-serif;
+  --font-body:'Poppins','Tajawal',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+.container{max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,64px)}
+

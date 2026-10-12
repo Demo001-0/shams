@@ -1,0 +1,18 @@
+/* css/refinements/brand-header.css — compact logo in the header row, matching the main Shams site header */
+.header-top{gap:20px}
+.brand{display:block;line-height:0;flex:0 0 auto}
+.brand img{height:40px;width:auto;display:block}
+/* the big centred logo stays only on the home splash; inner pages use the compact brand logo */
+body:not(.home-splash) .header .logo{display:none}
+/* on the home splash the big logo is already on screen, so hide the compact one (the sticky mini bar has its own) */
+.home-splash .header-top .brand{display:none}
+@media(min-width:821px){
+  .header-top>.header-actions:first-of-type{display:none}   /* empty on desktop (menu button is mobile-only) */
+  .header-top>.nav{flex:1;justify-content:center}
+  .home-splash .header-top>.nav{margin-inline:auto}
+}
+@media(max-width:820px){
+  .header-top>.header-actions:first-of-type{order:-1}   /* menu button first, then logo, then search/cart */
+  .header-top>.brand{margin-inline:auto}
+  .brand img{height:34px}
+}

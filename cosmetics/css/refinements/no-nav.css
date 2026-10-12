@@ -1,0 +1,5 @@
+/* css/refinements/no-nav.css — single-page site: no navigation bar / menu button (header = logo + search + cart) */
+.nav,.menu-btn,#mMenu,#mini nav{display:none!important}
+.header-top{display:flex!important;justify-content:space-between;align-items:center}
+.header-top>.header-actions:first-of-type{display:none!important}
+.header-top>.header-actions:last-child{margin-left:auto}

@@ -1,0 +1,38 @@
+/* css/refinements/hero-3d.css — simple 3D background for the "Glow with Shams" hero (sits UNDER the content; not on the logo/sun splash) */
+.hero2{position:relative;overflow:hidden}
+.hero2>.container{position:relative;z-index:1}
+.h3d{position:absolute;inset:0;z-index:0;pointer-events:none;perspective:900px;perspective-origin:50% 50%}
+.h3d-scene{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(calc(var(--ty,0)*1deg)) rotateY(calc(var(--tx,0)*1deg));transition:transform .5s ease-out}
+.h3d i{position:absolute;display:block;transform-style:preserve-3d}
+
+/* rings that slowly tumble in 3D */
+.h3d .r{border-radius:50%;border:2px solid rgba(23,11,11,.28);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.h3d .r1{width:420px;height:420px;left:-90px;top:-60px;animation:h3d-spin-a 26s linear infinite}
+.h3d .r2{width:300px;height:300px;right:6%;bottom:-90px;border-color:rgba(255,255,255,.55);animation:h3d-spin-b 32s linear infinite}
+.h3d .r3{width:190px;height:190px;left:42%;top:8%;border-width:1.5px;animation:h3d-spin-c 20s linear infinite}
+
+/* soft glossy orbs that float forward/back */
+.h3d .o{border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.95),rgba(196,82,74,.55) 45%,rgba(23,11,11,.35) 100%);box-shadow:0 18px 40px rgba(23,11,11,.18)}
+.h3d .o1{width:96px;height:96px;left:8%;bottom:14%;animation:h3d-float-a 9s ease-in-out infinite}
+.h3d .o2{width:60px;height:60px;left:52%;right:auto;top:10%;animation:h3d-float-b 7s ease-in-out infinite}
+.h3d .o3{width:130px;height:130px;right:-30px;top:30%;opacity:.85;animation:h3d-float-a 11s ease-in-out -3s infinite}
+
+
+@keyframes h3d-spin-a{from{transform:rotateX(68deg) rotateZ(0)}to{transform:rotateX(68deg) rotateZ(360deg)}}
+@keyframes h3d-spin-b{from{transform:rotateY(70deg) rotateZ(0)}to{transform:rotateY(70deg) rotateZ(-360deg)}}
+@keyframes h3d-spin-c{from{transform:rotateX(60deg) rotateY(30deg) rotateZ(0)}to{transform:rotateX(60deg) rotateY(30deg) rotateZ(360deg)}}
+@keyframes h3d-float-a{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(14px,-26px,90px)}}
+@keyframes h3d-float-b{0%,100%{transform:translate3d(0,0,40px)}50%{transform:translate3d(-18px,20px,-60px)}}
+
+@media(max-width:820px){.h3d .r1{width:260px;height:260px;left:-80px}.h3d .r2{width:200px;height:200px}.h3d .r3,.h3d .o3{display:none}}
+@media(prefers-reduced-motion:reduce){.h3d i,.h3d-scene{animation:none!important;transition:none}}
+
+/* ---------- same 3D background, behind the splash header (logo + sun stay on top, untouched) ---------- */
+.home-splash .header{overflow:hidden}
+.home-splash .header>.container{position:relative;z-index:1}
+.h3d.hd .r3{width:230px;height:230px;left:auto;right:14%;top:6%}
+.h3d.hd .o1{width:110px;height:110px;left:10%;bottom:12%}
+.h3d.hd .o2{width:64px;height:64px;left:auto;right:30%;top:auto;bottom:22%}
+.h3d.hd .o3{width:150px;height:150px;right:-40px;top:20%}
+.h3d.hd .o4{width:72px;height:72px;left:18%;top:14%;animation:h3d-float-b 8s ease-in-out -2s infinite;border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.95),rgba(196,82,74,.55) 45%,rgba(23,11,11,.35) 100%);box-shadow:0 18px 40px rgba(23,11,11,.18)}
+@media(max-width:820px){.h3d.hd .r3,.h3d.hd .o3{display:none}.h3d.hd .o4{width:48px;height:48px}}
